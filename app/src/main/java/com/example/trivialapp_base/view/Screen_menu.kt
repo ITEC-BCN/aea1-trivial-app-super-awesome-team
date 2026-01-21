@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -81,6 +82,9 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
 
             Button(
                 onClick = { expanded = true },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(R.color.yellow_custom),
+                    contentColor = Color.Black),
                 modifier = Modifier
                     .size(250.dp, 60.dp)
             ) { Text(
@@ -107,6 +111,9 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
 
             Button(
                 onClick = { navController.navigate(Routes.GameScreen.route) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(R.color.yellow_custom),
+                    contentColor = Color.Black),
                 modifier = Modifier
                     .padding(30.dp)
                     .size(100.dp),
@@ -116,7 +123,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                         .size(50.dp),
                     imageVector = Icons.Default.PlayArrow,
                     contentDescription = "Icon Example",
-                    tint = Color.White
+                    tint = Color.Black
                 )
             }
         }
