@@ -38,6 +38,7 @@ class GameViewModel : ViewModel() {
     fun setDificultad(dificultad: String) {
         dificultadSeleccionada = dificultad // Sense .value!
     }
+
     fun iniciarJuego() {
     }
 
