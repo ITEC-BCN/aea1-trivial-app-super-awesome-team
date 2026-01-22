@@ -27,6 +27,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -85,10 +86,10 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.yellow_custom),
                     contentColor = Color.Black),
-                modifier = Modifier
+                    modifier = Modifier
                     .size(250.dp, 60.dp)
             ) { Text(
-                text = selectedDifficulty,
+                text = (selectedDifficulty),
                 fontSize = 18.sp,
             ) }
 
@@ -96,7 +97,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
                 modifier = Modifier
-                    .border(2.dp, Color.Black, RoundedCornerShape(4.dp))
+                    .width(200.dp)
             ) {
                 difficulties.forEach { difficulties ->
                     DropdownMenuItem(
