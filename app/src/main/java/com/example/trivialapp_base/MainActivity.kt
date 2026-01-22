@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.trivialapp_base.ui.theme.TrivialAPP_BaseTheme
 import com.example.trivialapp_base.view.GameScreen
 import com.example.trivialapp_base.view.MenuScreen
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        installSplashScreen()
         setContent {
             TrivialAPP_BaseTheme {
                 val navigationController = rememberNavController()
