@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/trivial_icon"
+        android:icon="@drawable/trivial_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/trivial_icon"
+        android:roundIcon="@drawable/trivial_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrivialAPP_Guzman_Alex">
         <activity
