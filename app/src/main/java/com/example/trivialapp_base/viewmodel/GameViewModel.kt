@@ -31,13 +31,14 @@ class GameViewModel : ViewModel() {
     var dificultadSeleccionada by mutableStateOf("Facil")
         private set
 
-    private var timer: CountDownTimer? = null
+    private var timer: CountDownTimer? = null //controla el timer
     private val TIEMPO_POR_PREGUNTA = 10000L // 10 segons
 
     fun setDificultad(dificultad: String) {
         dificultadSeleccionada = dificultad // Sense .value!
     }
     fun iniciarJuego() {
+
     }
 
     private fun cargarSiguientePregunta() {
@@ -50,8 +51,22 @@ class GameViewModel : ViewModel() {
     }
 
     private fun iniciarTimer() {
+        timer?.cancel()
+        timer = object : CountDownTimer(TIEMPO_POR_PREGUNTA, 100){
+            override fun onTick(millisUntilFinished: Long) {
+                //actualizamos el estado directamente
+                tiempoRestante = millisUntilFinished.toFloat() / TIEMPO_POR_PREGUNTA
+            }
+
+            override fun onFinish() {
+                tiempoRestante = 0f
+                //carregar seguent pregunta
+            }
+        }
     }
 
     override fun onCleared() {
+        super.onCleared()
+        timer?.cancel()
     }
 }

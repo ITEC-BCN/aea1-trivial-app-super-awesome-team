@@ -1,9 +1,13 @@
 package com.example.trivialapp_base.view
 
 import androidx.compose.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -14,7 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.trivialapp_base.R
 import com.example.trivialapp_base.Routes
@@ -28,22 +34,44 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel) {
         contentAlignment =  Alignment.Center){
 
 
-        Column() {
-            Text(text = "Your Score")
-            Text(text = "${viewModel.puntuacion}")
-            Button(onClick = {}) {
-                Text(text = "Share")
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 21.dp),
+                text = "Your Score",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold)
+            Text(
+                modifier = Modifier
+                    .padding(horizontal = 30.dp),
+                text = "${viewModel.puntuacion}",
+                fontSize = 30.sp)
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(R.color.yellow_custom),
+                    contentColor = Color.Black),) {
+                Text(
+                    text = "Share",
+                    fontSize = 30.sp,
+                    )
             }
+            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {navController.navigate(Routes.MenuScreen.route)},
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(R.color.purple_200),
+                    containerColor = colorResource(R.color.yellow_custom),
                     contentColor = Color.Black),
-                modifier = Modifier
-                    .padding(30.dp)
-                    .size(100.dp),
             ) {
-                Text(text = "Return to menu")
+                Text(
+                    text = "Return to menu",
+                    fontSize = 30.sp)
             }
         }
 

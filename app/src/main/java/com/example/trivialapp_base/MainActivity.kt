@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 val gameViewModel: GameViewModel by viewModels()
                 NavHost(
                     navController = navigationController,
-                    startDestination = Routes.MenuScreen.route
+                    startDestination = Routes.ResultScreen.route
                 ) {
                     composable(Routes.MenuScreen.route) { MenuScreen(navigationController, gameViewModel) }
                     composable(Routes.GameScreen.route) { GameScreen(navigationController, gameViewModel) }
