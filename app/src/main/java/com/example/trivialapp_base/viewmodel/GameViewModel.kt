@@ -41,14 +41,13 @@ class GameViewModel : ViewModel() {
     }
 
     fun iniciarJuego() {
-        preguntasPartida = ProveedorPreguntas.obtenerPreguntas()
-        preguntasPartida.forEach { preguntaIteracio ->
-            preguntaIteracio.dificultad
+        var todasPreguntas = ProveedorPreguntas.obtenerPreguntas()
+        todasPreguntas.forEach { preguntaIteracio ->
             if (preguntaIteracio.dificultad == dificultadSeleccionada) {
-                this.preguntasPartida.add(preguntaIteracio)
+                preguntasPartida.add(preguntaIteracio)
             }
         }
-        //this.preguntasPartida.shuffled()
+        preguntasPartida.shuffle()
         this.preguntaActual = preguntasPartida[0]
     }
 

@@ -113,7 +113,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             Button(
                 onClick = {
                     navController.navigate(Routes.GameScreen.route)
-
+                    viewModel.iniciarJuego()
                           },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.yellow_custom),

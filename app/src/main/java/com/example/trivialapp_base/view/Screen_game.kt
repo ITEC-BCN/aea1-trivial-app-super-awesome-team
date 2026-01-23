@@ -29,22 +29,22 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
     ) {
         Column() {
             Text(text = "${viewModel.preguntaActual?.pregunta}" )
-            Text(text = "Round $activeQuestion/10")
+            Text(text = "Pregunta $activeQuestion/10")
 
             Row() {
                 Button(onClick = {}) {
-                    Text(text = "${questions.find { it.pregunta == "¿Capital de Francia?" }?.respuesta1}")
+                    Text(text = "${viewModel.preguntaActual?.respuesta1}")
                 }
                 Button(onClick = {}) {
-                    Text(text = "${questions.find { it.pregunta == "¿Capital de Francia?" }?.respuesta2}")
+                    Text(text = "${viewModel.preguntaActual?.respuesta2}")
                 }
             }
             Row() {
                 Button(onClick = {}) {
-                    Text(text = "${questions.find { it.pregunta == "¿Capital de Francia?" }?.respuesta3}")
+                    Text(text = "${viewModel.preguntaActual?.respuesta3}")
                 }
                 Button(onClick = {}) {
-                    Text(text = "${questions.find { it.pregunta == "¿Capital de Francia?" }?.respuesta4}")
+                    Text(text = "${viewModel.preguntaActual?.respuesta4}")
                 }
             }
 
