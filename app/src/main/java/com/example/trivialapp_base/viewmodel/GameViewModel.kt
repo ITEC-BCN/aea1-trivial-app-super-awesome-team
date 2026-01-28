@@ -11,9 +11,12 @@ import androidx.lifecycle.ViewModel
 import com.example.trivialapp_base.Routes
 import com.example.trivialapp_base.model.Pregunta
 import com.example.trivialapp_base.model.ProveedorPreguntas
+import kotlinx.coroutines.delay
+import kotlin.collections.MutableList
 
 class GameViewModel : ViewModel() {
     private var preguntasPartida: MutableList<Pregunta> = mutableListOf()
+    var gameSize = 0
     var indicePreguntaActual by mutableIntStateOf(0)
         private set
 
@@ -37,37 +40,34 @@ class GameViewModel : ViewModel() {
 
     private var timer: CountDownTimer? = null
     private val TIEMPO_POR_PREGUNTA = 10000L // 10 segons
-
     fun setDificultad(dificultad: String) {
         dificultadSeleccionada = dificultad // Sense .value!
     }
 
     fun iniciarJuego() {
+        juegoTerminado = false
+        indicePreguntaActual = 0
+        puntuacion = 0
+        preguntasPartida.clear()
         var todasPreguntas = ProveedorPreguntas.obtenerPreguntas()
         todasPreguntas.forEach { preguntaIteracio ->
             if (preguntaIteracio.dificultad == dificultadSeleccionada) {
                 preguntasPartida.add(preguntaIteracio)
             }
         }
+        gameSize = preguntasPartida.size
         preguntasPartida.shuffle()
-        this.preguntaActual = preguntasPartida[0]
-        respuestasMezcladas = listOf(
-            preguntaActual?.respuesta1 as String,
-            preguntaActual?.respuesta2 as String,
-            preguntaActual?.respuesta3 as String,
-            preguntaActual?.respuesta4 as String
-        ).shuffled()
+        cargarSiguientePregunta()
     }
 
     private fun cargarSiguientePregunta() {
-        indicePreguntaActual += 1
         this.preguntaActual = preguntasPartida[indicePreguntaActual]
         respuestasMezcladas = listOf(
             preguntaActual?.respuesta1 as String,
             preguntaActual?.respuesta2 as String,
             preguntaActual?.respuesta3 as String,
             preguntaActual?.respuesta4 as String
-        ).shuffled()
+        )
     }
 
     fun responderPregunta(respuestaUsuario: String) {
@@ -75,16 +75,15 @@ class GameViewModel : ViewModel() {
             puntuacion+= 10
         }
         avanzarRonda()
-        if (juegoTerminado){
-        }
         cargarSiguientePregunta()
     }
 
     private fun avanzarRonda() {
-        if (indicePreguntaActual > preguntasPartida.size){
+        if (indicePreguntaActual == preguntasPartida.size-1){
             juegoTerminado = true
+            return
         }
-
+        indicePreguntaActual += 1
     }
 
     private fun iniciarTimer() {

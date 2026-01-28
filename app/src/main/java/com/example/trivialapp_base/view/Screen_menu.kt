@@ -63,8 +63,6 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            //val (logoRef, contentRef, btnRef) = createRefs()
-
             Text(
                 modifier = Modifier
                     .padding(bottom = 50.dp),
