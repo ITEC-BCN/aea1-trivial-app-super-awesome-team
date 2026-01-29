@@ -63,8 +63,6 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            //val (logoRef, contentRef, btnRef) = createRefs()
-
             Text(
                 modifier = Modifier
                     .padding(bottom = 50.dp),
@@ -86,7 +84,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.yellow_custom),
                     contentColor = Color.Black),
-                modifier = Modifier
+                    modifier = Modifier
                     .size(250.dp, 60.dp)
             ) { Text(
                 text = (selectedDifficulty),
@@ -111,7 +109,10 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
             }
 
             Button(
-                onClick = { navController.navigate(Routes.GameScreen.route) },
+                onClick = {
+                    navController.navigate(Routes.GameScreen.route)
+                    viewModel.iniciarJuego()
+                          },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.yellow_custom),
                     contentColor = Color.Black),
