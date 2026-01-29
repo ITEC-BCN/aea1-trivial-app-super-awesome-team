@@ -20,7 +20,10 @@ import com.example.trivialapp_base.ui.theme.TrivialAPP_BaseTheme
 import com.example.trivialapp_base.view.GameScreen
 import com.example.trivialapp_base.view.MenuScreen
 import com.example.trivialapp_base.view.ResultScreen
+import com.example.trivialapp_base.view.SplashScreen
 import com.example.trivialapp_base.viewmodel.GameViewModel
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +35,9 @@ class MainActivity : ComponentActivity() {
                 val gameViewModel: GameViewModel by viewModels()
                 NavHost(
                     navController = navigationController,
-                    startDestination = Routes.ResultScreen.route
+                    startDestination = Routes.SplashScreen.route
                 ) {
+                    composable(Routes.SplashScreen.route) { SplashScreen(navigationController) }
                     composable(Routes.MenuScreen.route) { MenuScreen(navigationController, gameViewModel) }
                     composable(Routes.GameScreen.route) { GameScreen(navigationController, gameViewModel) }
                     composable(Routes.ResultScreen.route) { ResultScreen(navigationController, gameViewModel) }
