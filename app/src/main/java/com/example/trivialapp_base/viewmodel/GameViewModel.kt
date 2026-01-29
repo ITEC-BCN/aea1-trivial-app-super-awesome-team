@@ -67,7 +67,7 @@ class GameViewModel : ViewModel() {
             preguntaActual?.respuesta2 as String,
             preguntaActual?.respuesta3 as String,
             preguntaActual?.respuesta4 as String
-        )
+        ).shuffled()
         iniciarTimer()
     }
 
