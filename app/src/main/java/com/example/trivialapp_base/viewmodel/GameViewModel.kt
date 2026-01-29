@@ -68,9 +68,11 @@ class GameViewModel : ViewModel() {
             preguntaActual?.respuesta3 as String,
             preguntaActual?.respuesta4 as String
         )
+        iniciarTimer()
     }
 
     fun responderPregunta(respuestaUsuario: String) {
+        timer?.cancel()
         if (respuestaUsuario == preguntaActual?.respuestaCorrecta){
             puntuacion+= 10
         }
@@ -87,6 +89,22 @@ class GameViewModel : ViewModel() {
     }
 
     private fun iniciarTimer() {
+        timer?.cancel()
+        timer = object : CountDownTimer(TIEMPO_POR_PREGUNTA, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                // Actualitzem l'estat directament
+                tiempoRestante = millisUntilFinished.toFloat() / TIEMPO_POR_PREGUNTA
+            }
+
+            override fun onFinish() {
+                tiempoRestante = 0f
+                avanzarRonda()
+
+                if (!juegoTerminado) {
+                    cargarSiguientePregunta()
+                }
+            }
+        }.start()
     }
 
     override fun onCleared() {
