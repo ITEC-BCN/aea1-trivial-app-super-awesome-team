@@ -1,6 +1,8 @@
 package com.example.trivialapp_base.view
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,8 +10,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -59,6 +64,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
         ) {
             Text(text = "${viewModel.preguntaActual?.pregunta}",
                 fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(20.dp),
                 textAlign = TextAlign.Center,
@@ -90,6 +96,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = buttonColorOne,
                         contentColor = Color.Black),
+                    shape = MaterialTheme.shapes.medium,
                     modifier = Modifier
                         .padding(10.dp)
                         .size(160.dp, height = 80.dp)
@@ -116,6 +123,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = buttonColorTwo,
                         contentColor = Color.Black),
+                    shape = MaterialTheme.shapes.medium,
                     modifier = Modifier
                         .padding(10.dp)
                         .size(160.dp, height = 80.dp)
@@ -144,6 +152,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = buttonColorThree,
                         contentColor = Color.Black),
+                    shape = MaterialTheme.shapes.medium,
                     modifier = Modifier
                         .padding(10.dp)
                         .size(160.dp, height = 80.dp)
@@ -170,6 +179,7 @@ fun GameScreen(navController: NavController, viewModel: GameViewModel) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = buttonColorFour,
                         contentColor = Color.Black),
+                    shape = MaterialTheme.shapes.medium,
                     modifier = Modifier
                         .padding(10.dp)
                         .size(160.dp, height = 80.dp)

@@ -1,5 +1,6 @@
 package com.example.trivialapp_base.view
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,6 +28,12 @@ import com.example.trivialapp_base.viewmodel.GameViewModel
 
 @Composable
 fun ResultScreen(navController: NavController, viewModel: GameViewModel) {
+    val imageLevel = when {
+        viewModel.puntuacion <= 40 -> R.drawable.homer_simpson
+        viewModel.puntuacion < 70 -> R.drawable.promedio
+        else -> R.drawable.cerebro_galaxia
+    }
+
     Box(
         modifier = Modifier.
         fillMaxSize(),
@@ -40,10 +48,18 @@ fun ResultScreen(navController: NavController, viewModel: GameViewModel) {
         ) {
             Text(
                 modifier = Modifier
-                    .padding(bottom = 200.dp),
-                text = "Tu puntuación: ${viewModel.puntuacion}",
+                    .padding(bottom = 50.dp),
+                text = "Puntuación: ${viewModel.puntuacion}",
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold
+            )
+
+            Image(
+                painter = painterResource(imageLevel),
+                contentDescription = "Imagen puntuación: ${viewModel.puntuacion}",
+                modifier = Modifier
+                    .padding(bottom = 50.dp)
+                    .size(300.dp),
             )
 
             Button(

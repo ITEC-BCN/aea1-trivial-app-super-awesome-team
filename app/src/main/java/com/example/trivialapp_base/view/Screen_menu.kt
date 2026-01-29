@@ -65,9 +65,9 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
         ) {
             Text(
                 modifier = Modifier
-                    .padding(bottom = 50.dp),
+                    .padding(bottom = 100.dp),
                 text = "Trivial Pursuit",
-                fontSize = 40.sp,
+                fontSize = 50.sp,
                 fontWeight = FontWeight.Bold,
             )
             Image(
@@ -75,27 +75,27 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                 contentDescription = "Logo",
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .padding(bottom = 200.dp)
+                    .padding(bottom = 100.dp)
                     .size(200.dp),
             )
+            Box() {
+                Button(
+                    onClick = { expanded = true },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorResource(R.color.yellow_custom),
+                        contentColor = Color.Black),
+                        modifier = Modifier
+                        .size(250.dp, 60.dp)
+                ) { Text(
+                    text = (selectedDifficulty),
+                    fontSize = 18.sp,
+                ) }
 
-            Button(
-                onClick = { expanded = true },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(R.color.yellow_custom),
-                    contentColor = Color.Black),
-                    modifier = Modifier
-                    .size(250.dp, 60.dp)
-            ) { Text(
-                text = (selectedDifficulty),
-                fontSize = 18.sp,
-            ) }
-
-            DropdownMenu(
+                DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
                 modifier = Modifier
-                    .width(200.dp)
+                    .width(250.dp)
             ) {
                 difficulties.forEach { difficulties ->
                     DropdownMenuItem(
@@ -106,7 +106,7 @@ fun MenuScreen(navController: NavController, viewModel: GameViewModel) {
                             selectedDifficulty = difficulties
                         })
                 }
-            }
+            }}
 
             Button(
                 onClick = {
